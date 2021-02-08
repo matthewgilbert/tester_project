@@ -8,7 +8,5 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: 3.5
-          channels: [conda-forge, anaconda]
-          channel-priority: strict
           environment-file: env.yml
       - run: pytest
