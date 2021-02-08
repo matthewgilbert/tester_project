@@ -9,6 +9,7 @@ jobs:
         with:
           python-version: 3.5
           environment-file: env.yml
+          activate-environment: test
       - name: Conda info
         run: conda info
       - run: pytest
