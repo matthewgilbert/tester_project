@@ -1,0 +1,11 @@
+name: release-management
+on:
+    release:
+    types: [published]
+jobs:
+  testpypi-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: python -m build
+      - run: twine upload --verbose --repository testpypi dist/*
