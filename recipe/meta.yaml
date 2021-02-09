@@ -1,0 +1,32 @@
+{% set name = "tester_project" %}
+
+package:
+  name: "{{ name|lower }}"
+  version: "{{ GIT_FULL_HASH }}"
+
+source:
+  git_url: https://github.com/matthewgilbert/tester_project.git
+  git_depth: 1
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . -vv"
+
+requirements:
+  host:
+    - pip
+    - python
+  run:
+    - python
+
+
+about:
+  home: "https://github.com/matthewgilbert/tester_project"
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE.txt 
+  summary: "Test project"
+
+extra:
+  recipe-maintainers:
+    - matthewgilbert
