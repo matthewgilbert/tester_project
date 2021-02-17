@@ -1,4 +1,4 @@
-name: run-test-suite
+name: test-suite
 on: [push]
 jobs:
   run-tests:
