@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Version Hack
-        run: sed -i "s/attr: tester_project.__version__/${GITHUB_SHA}/g" setup.cfg
+        run: sed -i "s/attr{{':'}} tester_project.__version__/${GITHUB_SHA}/g" setup.cfg
       - name: Install build
         run: python -m pip install build --user
       - name: Build package
