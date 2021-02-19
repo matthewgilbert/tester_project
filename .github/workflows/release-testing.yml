@@ -1,10 +1,6 @@
 name: release-testing
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - master
-      - dev
 jobs:
   testpypi-release:
     runs-on: ubuntu-latest
@@ -24,3 +20,14 @@ jobs:
           repository_url: https://test.pypi.org/legacy/
           verbose: true
 
+name: hello
+on: [push]
+jobs:
+  run-hello:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - name: Hi
+        run: echo "Hello"
