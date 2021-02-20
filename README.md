@@ -1,7 +1,4 @@
 Test project for testing CI/CD
 
-Test
+part1
 
-Add a feature
-
-Another feature
