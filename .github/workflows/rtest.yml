@@ -2,14 +2,15 @@ name: rtest
 on:
   workflow_dispatch:
 jobs:
-  release-manager:
+  generate-changelog:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: 2.6
       - name: Ruby setup
         run: gem install github_changelog_generator
       - name: Create changelog
-
         run: github-changelog-generator -u matthewgilbert -p tester_project
