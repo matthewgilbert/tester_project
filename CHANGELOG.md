@@ -1,8 +1,12 @@
 # Changelog
 
-## [Unreleased](https://github.com/matthewgilbert/tester_project/tree/HEAD)
+## [v0.0.8](https://github.com/matthewgilbert/tester_project/tree/v0.0.8) (2021-03-06)
 
-[Full Changelog](https://github.com/matthewgilbert/tester_project/compare/v0.0.6...HEAD)
+[Full Changelog](https://github.com/matthewgilbert/tester_project/compare/v0.0.7...v0.0.8)
+
+## [v0.0.7](https://github.com/matthewgilbert/tester_project/tree/v0.0.7) (2021-03-06)
+
+[Full Changelog](https://github.com/matthewgilbert/tester_project/compare/v0.0.6...v0.0.7)
 
 **Merged pull requests:**
 
