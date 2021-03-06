@@ -20,7 +20,7 @@ jobs:
         run: |
           git config --global user.email "2401026+matthewgilbert@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          echo "__version__=${{ github.event.inputs.version }} > src/tester_project/__init__.py
+          echo "__version__ = \"${{ github.event.inputs.version }}\"" > src/tester_project/__init__.py
           git add src/tester_project/__init__.py
           git commit -m "RLS: Update version for upcoming release ${{ github.event.inputs.version }}"
           git tag -a "v${{ github.event.inputs.version }}" -m "Version ${{ github.event.inputs.version }}"
