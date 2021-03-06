@@ -14,3 +14,15 @@ jobs:
       - name: Conda info
         run: conda info
       - run: pytest
+  test-doc-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          environment-file: env.yml
+      - name: Build docs
+        run: cd doc && make html
