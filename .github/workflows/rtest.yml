@@ -13,4 +13,4 @@ jobs:
       - name: Ruby setup
         run: gem install github_changelog_generator
       - name: Create changelog
-        run: github-changelog-generator -u matthewgilbert -p tester_project
+        run: github_changelog_generator -u matthewgilbert -p tester_project
