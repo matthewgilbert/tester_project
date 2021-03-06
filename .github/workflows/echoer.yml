@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: 3.8
       - name: Echo it
-        run: echo "Hello from ${GITHUB_REF}"
+        run: echosda "Hello from ${GITHUB_REF}"
       - name: Branch name
         run: git branch -a
       - name: Commit stuff
