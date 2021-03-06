@@ -6,7 +6,7 @@ on:
         description: 'Version tag, e.g. 0.0.1'
         required: true
 jobs:
-  echo-stuff:
+  release-manager:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
@@ -14,12 +14,23 @@ jobs:
       - uses: actions/setup-python@v1
         with:
           python-version: 3.8
-      - name: Branch name
-        run: git branch -a
-      - name: Version bump and tag
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - name: Environment setup
         run: |
+          gem install github_changelog_generator
           git config --global user.email "2401026+matthewgilbert@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+      - name: Build and commit CHANGELOG
+        run: |
+          github_changelog_generator -u matthewgilbert -p tester_project
+          git add CHANGELOG.md
+          git commit -m "RLS: Update changelog for upcoming release ${{ github.event.inputs.version }}"
+          git push
+      - name: Version bump and tag
+        run: |
+          echo "Creating release for ${{ github.event.inputs.version }}"
           echo "__version__ = \"${{ github.event.inputs.version }}\"" > src/tester_project/__init__.py
           git add src/tester_project/__init__.py
           git commit -m "RLS: Update version for upcoming release ${{ github.event.inputs.version }}"
