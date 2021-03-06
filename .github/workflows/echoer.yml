@@ -1,0 +1,15 @@
+name: echoer
+on:
+  workflow_dispatch:
+    branches:
+      - master
+jobs:
+  echo-stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.8
+      - name: Echo it
+        run: echo "Hello"
