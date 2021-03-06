@@ -1,7 +1,7 @@
 name: test-suite
 on: [push]
 jobs:
-  run-tests:
+  unittests:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -12,9 +12,9 @@ jobs:
         with:
           environment-file: env.yml
       - name: Conda info
-        run: conda info
+        run: conda info && conda list
       - run: pytest
-  test-doc-build:
+  doc-build:
     runs-on: ubuntu-latest
     defaults:
       run:
