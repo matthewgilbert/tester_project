@@ -19,6 +19,8 @@ jobs:
         run: |
           git checkout gh-pages
           touch great_file
+          git config --global user.email "botman@bot.com"
+          git config --global user.name "Ro Bot"
           git add great_file
           git commit -m "Automatic"
           git push
