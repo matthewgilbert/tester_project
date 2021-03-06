@@ -38,12 +38,12 @@ jobs:
           git add CHANGELOG.md
           git commit -m "RLS: Create CHANGELOG for release ${{ github.event.inputs.version }}"
           git push
-    - name: Build package
-      run: python -m build --sdist --wheel --outdir dist/
-    - name: Publish to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        user: __token__
-        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-        repository_url: https://test.pypi.org/legacy/
-        verbose: true
+      - name: Build package
+        run: python -m build --sdist --wheel --outdir dist/
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository_url: https://test.pypi.org/legacy/
+          verbose: true
