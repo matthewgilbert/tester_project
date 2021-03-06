@@ -1,11 +1,11 @@
 name: test-suite
 on: [push]
 jobs:
-  runs-on: ubuntu-latest
-  defaults:
-    run:
-      shell: bash -l {0}
   unittests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -15,6 +15,10 @@ jobs:
         run: conda info && conda list
       - run: pytest
   doc-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - uses: actions/checkout@v2
       - uses: conda-incubator/setup-miniconda@v2
@@ -23,6 +27,10 @@ jobs:
       - name: Build docs
         run: cd doc && make html
   package-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
       - name: Build package
         run: python -m build --sdist --wheel --outdir dist/
