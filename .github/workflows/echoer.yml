@@ -1,5 +1,6 @@
 name: echoer
-on: [push]
+on:
+  workflow_dispatch:
 jobs:
   echo-stuff:
     runs-on: ubuntu-latest
