@@ -13,3 +13,5 @@ jobs:
           python-version: 3.8
       - name: Echo it
         run: echo "Hello"
+      - name: Branch name
+        run: git branch
