@@ -3,9 +3,6 @@ on: workflow_dispatch
 jobs:
   echo-stuff:
     runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/master'
-    steps:
-      - run: Echo "only defined for master not ${GITHUB_REF}"
     if: github.ref == 'refs/heads/master'
     steps:
       - uses: actions/checkout@v2
@@ -13,6 +10,6 @@ jobs:
         with:
           python-version: 3.8
       - name: Echo it
-        run: echo "Hello"
+        run: echo "Hello from ${GITHUB_REF}"
       - name: Branch name
         run: git branch
