@@ -1,4 +1,4 @@
-name: release
+name: Create Release
 on:
   workflow_dispatch:
     inputs:
@@ -6,7 +6,7 @@ on:
         description: 'Version tag, e.g. 0.0.1'
         required: true
 jobs:
-  release-manager:
+  release:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
@@ -22,12 +22,8 @@ jobs:
           gem install github_changelog_generator
           git config --global user.email "2401026+matthewgilbert@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-      - name: Build and commit CHANGELOG
-        run: |
-          github_changelog_generator -u matthewgilbert -p tester_project
-          git add CHANGELOG.md
-          git commit -m "RLS: Update changelog for upcoming release ${{ github.event.inputs.version }}"
-          git push
+          python -m pip install --upgrade pip
+          pip install setuptools wheel
       - name: Version bump and tag
         run: |
           echo "Creating release for ${{ github.event.inputs.version }}"
@@ -36,3 +32,18 @@ jobs:
           git commit -m "RLS: Update version for upcoming release ${{ github.event.inputs.version }}"
           git tag -a "v${{ github.event.inputs.version }}" -m "Version ${{ github.event.inputs.version }}"
           git push && git push --tags
+      - name: Build and commit CHANGELOG
+        run: |
+          github_changelog_generator -u matthewgilbert -p tester_project
+          git add CHANGELOG.md
+          git commit -m "RLS: Create CHANGELOG for release ${{ github.event.inputs.version }}"
+          git push
+    - name: Build package
+      run: python -m build --sdist --wheel --outdir dist/
+    - name: Publish to PyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        user: __token__
+        password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+        repository_url: https://test.pypi.org/legacy/
+        verbose: true
