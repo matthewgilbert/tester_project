@@ -12,7 +12,7 @@ jobs:
       - name: Echo it
         run: echo "Hello from ${GITHUB_REF}"
       - name: Branch name
-        run: git branch
+        run: git branch -a
       - name: Commit stuff
         run: |
           git checkout gh-pages
