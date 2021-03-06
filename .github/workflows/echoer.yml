@@ -1,6 +1,8 @@
 name: echoer
 on:
   workflow_dispatch:
+    branches:
+      - new_feature
 jobs:
   echo-stuff:
     runs-on: ubuntu-latest
