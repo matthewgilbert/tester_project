@@ -22,8 +22,6 @@ jobs:
           gem install github_changelog_generator
           git config --global user.email "2401026+matthewgilbert@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          python -m pip install --upgrade pip
-          pip install setuptools wheel build
       - name: Version bump and tag
         run: |
           echo "Creating release for ${{ github.event.inputs.version }}"
