@@ -1,5 +1,6 @@
 name: test
 dependencies:
+  - pip
   - pytest
   - python=3.8
   - sphinx
