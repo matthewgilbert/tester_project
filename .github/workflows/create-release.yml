@@ -24,8 +24,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           python -m pip install --upgrade pip
           pip install setuptools wheel build
-      - name: Build package
-        run: python -m build --sdist --wheel --outdir dist/
       - name: Version bump and tag
         run: |
           echo "Creating release for ${{ github.event.inputs.version }}"
@@ -36,10 +34,12 @@ jobs:
           git push && git push --tags
       - name: Build and commit CHANGELOG
         run: |
-          github_changelog_generator -u matthewgilbert -p tester_project
+          github_changelog_generator -u matthewgilbert -p tester_project --token ${{ secrets.GITHUB_TOKEN }}
           git add CHANGELOG.md
           git commit -m "RLS: Create CHANGELOG for release ${{ github.event.inputs.version }}"
           git push
+      - name: Build package
+        run: python -m build --sdist --wheel --outdir dist/
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
