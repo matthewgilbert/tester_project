@@ -24,6 +24,7 @@ jobs:
       - name: Commit docs
         run: |
           git checkout gh-pages
-          echo $PWD
-          cp doc/build/* .
-          ls
+          mkdir -p docs && cp -r doc/build/* docs
+          git add docs/*
+          git commit -m "ENH: Release new docs"
+          git push
