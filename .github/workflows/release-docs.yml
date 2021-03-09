@@ -24,7 +24,7 @@ jobs:
       - name: Commit docs
         run: |
           git checkout gh-pages
-          mkdir -p docs && cp -r doc/build/html/* docs/
+          rm -rf docs && mkdir docs && cp -r doc/build/html/* docs/
           git add docs/*
           git commit -m "ENH: Release new docs"
           git push
