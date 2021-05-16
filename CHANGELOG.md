@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.0.11-alpha](https://github.com/matthewgilbert/tester_project/tree/v0.0.11-alpha) (2021-05-16)
+
+[Full Changelog](https://github.com/matthewgilbert/tester_project/compare/v0.0.10...v0.0.11-alpha)
+
 ## [v0.0.10](https://github.com/matthewgilbert/tester_project/tree/v0.0.10) (2021-03-09)
 
 [Full Changelog](https://github.com/matthewgilbert/tester_project/compare/v0.0.9...v0.0.10)
